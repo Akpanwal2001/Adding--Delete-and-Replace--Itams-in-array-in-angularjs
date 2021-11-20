@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Display</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<table>
+    <tr>
+        <td>
+            <label for="date">Date : </label>
+            <input id="date" type="date" ng-model="date">
+        </td>
+        <td>
+            <label for="partyname">Party Name : </label>
+            <input id="partyname" type="text" ng-model="partyname">
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="Remarks">Remarks</label>
+            <input id="Remarks" type="text" ng-model="Remarks">
+        </td>
+        
+        <td>
+            <label for="itamname">Itam Name : </label>
+            <input id="itamname" type="text" ng-model="itamname">
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <label for="qty">Qty </label>
+            <input id="qty" type="text" ng-model="qty" ng-change="mtotal()">
+        </td>
+        <td>
+            <label for="rate">Rate</label>
+            <input id="rate" type="text" ng-model="rate" ng-change="mtotal()">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="value">Value</label>
+            <input id="value" type="text" ng-model="value" ng-change="mtotal()">
+        </td>
+
+        <td>
+            <label for="tax">Tax % </label>
+            <input id="tax" type="text" ng-model="tax" ng-change="taxtotal()">
+        </td>        
+    </tr>
+    <tr>
+        <td>
+            <label for="taxvalue">Tax Value</label>
+            <input id="taxvalue" type="text" ng-model="taxvalue" ng-change="taxtotal()"> 
+        </td>  
+        <td>
+            <label for="amount">Amount</label>
+            <input id="amount" type="text" ng-model="amount">
+        </td>
+    </tr>
+</table>
+<br>
+<button ng-click="print()"> Add </button>
+
+<br><br>
+
+<H1> Details </H1>
+<table>
+    <tr>
+        <td style="background-color:#f1f1f1">
+            Sno
+        </td>
+        <td style="background-color:#f1f1f1">
+            Date
+        </td>
+        <td>
+            Partyname
+        </td>
+        <td style="background-color:#f1f1f1">
+            Remarks
+        </td>
+        <td>
+            Itam Name
+        </td>
+        <td>
+            Qty
+        </td>
+        <td>
+            Rate
+        </td>
+        <td>
+            Value
+        </td>
+        <td>
+            Tax %
+        </td>
+        <td>
+            Tax Value
+        </td>
+        <td>
+            Total Amount
+        </td>
+        <td>
+            Edit /
+            Delete
+        </td>
+    </tr>
+    <tr ng-repeat="i in itams">
+        <td style="background-color:#f1f1f1">
+            {{$index+1}}
+        </td>
+        <td style="background-color:#f1f1f1">
+            {{i.Date | date}}
+        </td>
+        <td>
+            {{i.PartyName}}
+        </td>
+        <td style="background-color:#f1f1f1">
+            {{i.remarks}}
+        </td>
+        <td>
+            {{i.ItamName}}
+        </td>
+        <td>
+            {{i.Qty}}
+        </td>
+        <td>
+            {{i.Rate}}
+        </td>
+        <td>
+            {{i.Value}}
+        </td>
+        <td>
+            {{i.Tax}}
+        </td>
+        <td>
+            {{i.TaxValue}}
+        </td>
+        <td>
+            {{i.Amount}}
+        </td>
+        <td>
+            <button ng-click="edit($index)">Edit</button>
+            
+            <button ng-click="delete($index)">Delete</button>
+        </td>
+    </tr>
+    
+</table>
+    <script src="index.js"></script>
+</body>
+</html>
